@@ -126,7 +126,7 @@ void leerabbit(Fenetre *f)
 		rabbit=new item(f,"rabbit",0,500,100,{"all","rabbit"});
 		textesupersaut=new item(f,"textesupersaut",0,0,0,{""});
 		textescore=new item(f,"textescore",0,resc*tailleSprite/3,0,{""});
-		textebestscore=new item(f,"textebestscore",0,(resc-1)*tailleSprite/1.5,0,{""});
+		textebestscore=new item(f,"textebestscore",0,(resc-1)*tailleSprite/1.8,0,{""});
 		textefps=new item(f,"textefps",0,(resc-1)*tailleSprite-50,0,{""});
 		haut->changerRect(0,-100,f->largeur,100);
 		droite->changerRect(f->largeur,0,1000,f->hauteur);
@@ -148,6 +148,7 @@ void leerabbit(Fenetre *f)
 		scoreTimer=0;
 		jumpdispo=1;
 		superjumpdispo=1;
+		colorBG=0;
 		fstream fich;
 		fich.open("score.txt", ios::in);
 		fich>>bestscore;
@@ -173,42 +174,43 @@ void leerabbit(Fenetre *f)
 		}
 		f->setBG(255,0,0,0);
 
-		textesupersaut->addApparence("dispo","SUPER JUMP: DISPO","Square.ttf",30,255,255,255,255);
-		textesupersaut->addApparence("indispo","SUPER JUMP: INDISPONIBLE","Square.ttf",30,255,255,255,255);
+		textesupersaut->addApparence("dispo","SUPER JUMP: Available","TravelingTypewriter.otf",30,255,255,255,255);
+		textesupersaut->addApparence("indispo","SUPER JUMP: Not Yet","TravelingTypewriter.otf",30,255,255,255,255);
 		f->blit(textesupersaut);
 
-		textescore->addApparence("base","SC="+ItoS(score),"Square.ttf",30,255,255,255,255);
+		textescore->addApparence("base","SC="+ItoS(score),"TravelingTypewriter.otf",30,255,255,255,255);
 		textescore->delApparence('e',"dispo");
-		textescore->addApparence("base","SCORE="+ItoS(score),"Square.ttf",30,255,255,255,255);
+		textescore->addApparence("base","SCORE="+ItoS(score),"TravelingTypewriter.otf",30,255,255,255,255);
 		f->blit(textescore);
 		textefps->addApparence("base",ItoS(f->currFps),"Square.ttf",30,255,255,255,255);
 		f->blit(textefps);
 
 		textebestscore->addApparence("base","BESTSCORE="+ItoS(bestscore)+" ("+pseudobestscore+")",
-		"Square.ttf",30,255,255,255,255);
+		"TravelingTypewriter.otf",30,255,255,255,255);
 		f->blit(textebestscore);
 	}
-
+	int isFalling=(score/500)%2==1;
 	if(score>=scoreTimer+30)
 	{
 		scoreTimer=score;
-		textefps->addApparence("base",ItoS(f->currFps),"Square.ttf",30,255,255,255,255);
-		textescore->addApparence("base","SCORE="+ItoS(score),"Square.ttf",30,255,255,255,255);
+		textefps->addApparence("base",ItoS(f->currFps),"TravelingTypewriter.otf",30,255,255,255,255);
+		textescore->addApparence("base","SCORE="+ItoS(score),"TravelingTypewriter.otf",30,255,255,255,255);
 	}
 	rabbit->moveAuMax(scroll,0,0);
+	if(colorBG==0 && isFalling){
+		f->setBG(255,rrand(0,60),rrand(0,60),rrand(0,60));
+		colorBG=1;
+	}
+	else if(colorBG==1 && !isFalling){
+		f->setBG(255,rrand(0,60),rrand(0,60),rrand(0,60));
+		colorBG=0;
+	}
 	for(int i=0;i<resl;i++)
 	{
 		for(int j=0;j<resc;j++)
 		{
-			if(colorBG==0 && (score/1000)%2==1){
-				f->setBG(255,50,20,20);
-				colorBG==1;
-			}
-			else if(colorBG==1 && !((score/1000)%2==1)){
-				f->setBG(255,0,0,0);
-				colorBG==0;
-			}
-			bricks[i][j]->changerVitesseXY(scroll,((score/1000)%2==1)*(10*(resl-i)+20));
+
+			bricks[i][j]->changerVitesseXY(scroll,isFalling*(10*(resl-i)+20));
 			bricks[i][j]->moveAuMax(0);
 
 			if(bricks[i][j]->etat.rect.x<=-tailleSprite)
@@ -358,7 +360,7 @@ void menu(Fenetre *f)
 
 		f->setBG(100,0,0,0);
 		menuTexte=new item(f,"menu",0,0,0,{""});
-		menuTexte->addApparence("base","Q : Gauche\nD : Droite\nSPACE : Saut simple\nN : accelerer vers le bas\nZ : SUPER SAUT \n(10 secondes entre deux relances)\n\nPour relancer un saut il faut \ntoucher un bloc \nTaper trop vite contre un bloc\nle fait disparaitre ! \n\nEn Jeu :\nAppuie sur A pour QUITTER\nAppuie sur S pour mettre en Pause le Jeu",
+		menuTexte->addApparence("base","Q : Left\n\nD : Right\n\nSPACE : jump. \nTouch a block to jump again.\n\nN : Boost down\n\nZ : Super Jump\n(10 seconds cooldown)\n\nA : Quit\n\nS : Pause/Resume",
 		"TravelingTypewriter.otf",
 		(int)(55.0*(resc-1)*tailleSprite/1700.0),255,255,255,255);
 		f->blit(menuTexte);
@@ -403,12 +405,12 @@ void pause(Fenetre *f)
 
 		f->setBG(255,100,100,100);
 		menuTexte=new item(f,"menu",0,resc*tailleSprite*0.35,(resl)*tailleSprite/2,{""});
-		menuTexte->addApparence("base","JEU EN PAUSE","TravelingTypewriter.otf",
+		menuTexte->addApparence("base","PAUSED","TravelingTypewriter.otf",
 			(int)(70.0*(resc-1)*tailleSprite/1700.0),255,255,255,255);
 		f->blit(menuTexte);
 		f->actionsList[pause]=0;
 
-		bPause= new button(f,"bStart"," REPRENDRE ! ",bPauseFCT,resc*tailleSprite*0.35+5,(resl)*tailleSprite/1.6,
+		bPause= new button(f,"bStart"," RESUME ! ",bPauseFCT,resc*tailleSprite*0.35+5,(resl)*tailleSprite/1.6,
 		"TravelingTypewriter.otf",60,255,255,255,255,255,0,0,0,0,-10);
 	}
 
@@ -431,8 +433,8 @@ void pause(Fenetre *f)
 void musiquef(Fenetre *f)
 {
 
-	// Mix_Music *musique= Mix_LoadMUS("Kyoukai no Kanata Ending Full.wav");
-	// Mix_PlayMusic(musique, -1);
+	Mix_Music *musique= Mix_LoadMUS("watson-placesyouwillgo.mp3");
+	Mix_PlayMusic(musique, -1);
 	f->delAction(musiquef);
 	f->addAction(menu,1);
 }
@@ -440,7 +442,7 @@ void musiquef(Fenetre *f)
 int main(int argc, char** argv)
 {
 
-	Fenetre f((resc-1)*tailleSprite,resl*tailleSprite,"PONG",10,100,4,musiquef,200,1);
+	Fenetre f((resc-1)*tailleSprite,resl*tailleSprite,"Blopolo",10,100,4,musiquef,200,1);
 
 	f.mainLoop();
 
