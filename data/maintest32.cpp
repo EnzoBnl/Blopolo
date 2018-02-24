@@ -440,9 +440,9 @@ void musiquef(Fenetre *f)
 int main(int argc, char** argv)
 {
 
-	Fenetre f((resc-1)*tailleSprite,resl*tailleSprite,"PONG",10,100,4,musiquef,200,0);
+	Fenetre f((resc-1)*tailleSprite,resl*tailleSprite,"PONG",10,100,4,musiquef,200,1);
 
 	f.mainLoop();
-	
+
 
 return 0;}
