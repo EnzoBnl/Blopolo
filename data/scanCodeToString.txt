@@ -1,0 +1,43 @@
+TRONCA X ET Y A DIFFERENCIER
+Rendre les argument privates
+attention : oibstacles etaient plus large
+Effacer apparence si meme id redefini
+OPTIMISER MOVE AUMAX
+scanCodeToChar[20]='a';
+scanCodeToChar[26]='z';
+scanCodeToChar[8]='e';
+scanCodeToChar[21]='r';
+scanCodeToChar[23]='t';
+scanCodeToChar[28]='y';
+scanCodeToChar[24]='u';
+scanCodeToChar[12]='i';
+scanCodeToChar[18]='o';
+scanCodeToChar[19]='p';
+scanCodeToChar[4]='q';
+scanCodeToChar[22]='s';
+scanCodeToChar[7]='d';
+scanCodeToChar[9]='f';
+scanCodeToChar[10]='g';
+scanCodeToChar[11]='h';
+scanCodeToChar[13]='j';
+scanCodeToChar[14]='k';
+scanCodeToChar[15]='l';
+scanCodeToChar[51]='m';
+scanCodeToChar[29]='w';
+scanCodeToChar[27]='x';
+scanCodeToChar[6]='c';
+scanCodeToChar[25]='v';
+scanCodeToChar[5]='b';
+scanCodeToChar[17]='n';
+scanCodeToChar[98]='0';
+scanCodeToChar[89]='1';
+scanCodeToChar[90]='2';
+scanCodeToChar[91]='3';
+scanCodeToChar[92]='4';
+scanCodeToChar[93]='5';
+scanCodeToChar[94]='6';
+scanCodeToChar[95]='7';
+scanCodeToChar[96]='8';
+scanCodeToChar[97]='9';
+scanCodeToChar[44]=' ';
+scanCodeToChar[44]='\n';
