@@ -121,7 +121,7 @@ int reach(float i,int taille,int tab[])
 	while(res<taille and currsum<=i)
 	{
 		currsum+=tab[res];
-		res++;	
+		res++;
 	}
 	return res-1;
 }
@@ -136,7 +136,7 @@ int reach(float i,int taille,float tab[])
 	while(res<taille and currsum<=i)
 	{
 		currsum+=tab[res];
-		res++;	
+		res++;
 	}
 	return res-1;
 }
@@ -173,7 +173,7 @@ int reach(float i,int taille,vector<int> tab)
 	while(res<taille and currsum<=i)
 	{
 		currsum+=tab[res];
-		res++;	
+		res++;
 	}
 	return res-1;
 }
@@ -189,7 +189,7 @@ int reach(float i,int taille,vector<float>tab)
 	while(res<taille and currsum<=i)
 	{
 		currsum+=tab[res];
-		res++;	
+		res++;
 	}
 	return res-1;
 }
@@ -252,13 +252,13 @@ int StoI(string s)
 
 float dmod(float x,float y)
 {/*modulo pour float, renvoie (x dmod y)*/
-	
+
 	if(y==0)
 	{
 		return 0;
 	}
 	float res=(x-((int)(x/y))*y);
-	
+
 	if(0<=res and res<y)
 	{
 		return res;
@@ -272,11 +272,11 @@ float dmod(float x,float y)
 //INT :
 IntTab::IntTab(int taille,...)
 {/**/
-	
+
 	this->tab.resize(taille);
 	va_list listeint;
 	va_start(listeint,taille);
-	
+
 	for(int i =0;i<taille;i++)
 	{
 		this->tab[i]=va_arg(listeint,int);
@@ -285,7 +285,7 @@ IntTab::IntTab(int taille,...)
 
 IntTab::IntTab(int taille,int t[])
 {/**/
-	
+
 	this->tab.resize(taille);
 	for(int i =0;i<taille;i++)
 	{
@@ -311,7 +311,7 @@ IntTab::IntTab(string param)
 		}
 	}
 	this->resize(taille);
-	
+
 	string straconv;
 	int indicestr=0;
 	for(int i=0;i<taille;i++)
@@ -324,7 +324,7 @@ IntTab::IntTab(string param)
 		 }
 		 this->set(i,StoI(straconv));
 		 indicestr++;
-	}	
+	}
 }
 
 int IntTab::size()
@@ -347,7 +347,7 @@ void IntTab::set(int indice, int i)
 	{
 		this->tab[indice]=i;
 	}
-	
+
 }
 
 void IntTab::append(int i)
@@ -384,7 +384,7 @@ void IntTab::concatD(IntTab t)
 	{
 		this->set(i,t.get(i-newsize+t.size()));
 	}
-	
+
 }
 
 void IntTab::del(int indice)
@@ -440,7 +440,7 @@ int IntTab::reach(int i)
 	while(res<this->size() and currsum<i)
 	{
 		currsum+=this->tab[res];
-		res++;	
+		res++;
 	}
 	return res-1;
 }
@@ -456,7 +456,7 @@ int IntTab::reach(float i)
 	while(res<this->size() and currsum<i)
 	{
 		currsum+=this->tab[res];
-		res++;	
+		res++;
 	}
 	return res-1;
 }
@@ -465,11 +465,11 @@ int IntTab::reach(float i)
 
 DblTab::DblTab(int taille,...)
 {/**/
-	
+
 	this->tab.resize(taille);
 	va_list listefloat;
 	va_start(listefloat,taille);
-	
+
 	for(int i =0;i<taille;i++)
 	{
 		this->tab[i]=va_arg(listefloat,double);
@@ -478,7 +478,7 @@ DblTab::DblTab(int taille,...)
 
 DblTab::DblTab(int taille,float t[])
 {/**/
-	
+
 	this->tab.resize(taille);
 	for(int i =0;i<taille;i++)
 	{
@@ -506,7 +506,7 @@ void DblTab::set(int indice, float i)
 	{
 		this->tab[indice]=i;
 	}
-	
+
 }
 
 void DblTab::append(float i)
@@ -543,7 +543,7 @@ void DblTab::concatD(DblTab t)
 	{
 		this->set(i,t.get(i-newsize+t.size()));
 	}
-	
+
 }
 
 void DblTab::del(int indice)
@@ -589,7 +589,7 @@ int DblTab::reach(float i)
 	while(res<this->size() and currsum<i)
 	{
 		currsum+=this->tab[res];
-		res++;	
+		res++;
 	}
 	return res-1;
 }
@@ -599,11 +599,11 @@ int DblTab::reach(float i)
 
 PtrTab::PtrTab(int taille,...)
 {/**/
-	
+
 	this->tab.resize(taille);
 	va_list listevoide;
 	va_start(listevoide,taille);
-	
+
 	for(int i =0;i<taille;i++)
 	{
 		this->tab[i]=va_arg(listevoide,void*);
@@ -612,7 +612,7 @@ PtrTab::PtrTab(int taille,...)
 
 PtrTab::PtrTab(int taille,void* t[])
 {/**/
-	
+
 	this->tab.resize(taille);
 	for(int i =0;i<taille;i++)
 	{
@@ -640,7 +640,7 @@ void PtrTab::set(int indice, void* i)
 	{
 		this->tab[indice]=i;
 	}
-	
+
 }
 
 void PtrTab::append(void* i)
@@ -677,7 +677,7 @@ void PtrTab::concatD(PtrTab t)
 	{
 		this->set(i,t.get(i-newsize+t.size()));
 	}
-	
+
 }
 
 void PtrTab::del(int indice)
@@ -706,11 +706,11 @@ void PtrTab::resize(int i)
 
 SrfTab::SrfTab(int taille,...)
 {/**/
-	
+
 	this->tab.resize(taille);
 	va_list listevoide;
 	va_start(listevoide,taille);
-	
+
 	for(int i =0;i<taille;i++)
 	{
 		this->tab[i]=va_arg(listevoide,SDL_Surface*);
@@ -719,7 +719,7 @@ SrfTab::SrfTab(int taille,...)
 
 SrfTab::SrfTab(int taille,SDL_Surface* t[])
 {/**/
-	
+
 	this->tab.resize(taille);
 	for(int i =0;i<taille;i++)
 	{
@@ -747,7 +747,7 @@ void SrfTab::set(int indice, SDL_Surface* i)
 	{
 		this->tab[indice]=i;
 	}
-	
+
 }
 
 void SrfTab::append(SDL_Surface* i)
@@ -784,7 +784,7 @@ void SrfTab::concatD(SrfTab t)
 	{
 		this->set(i,t.get(i-newsize+t.size()));
 	}
-	
+
 }
 
 void SrfTab::del(int indice)
@@ -813,20 +813,20 @@ void SrfTab::resize(int i)
 
 StrTab::StrTab(string s)
 {
-	
+
 	this->tab.resize(1);
 	this->tab[0]=s;
-} 
+}
 
 StrTab::StrTab(int taille,string t[])
 {
-	
+
 	this->tab.resize(taille);
 	for(int i =0;i<taille;i++)
 	{
 		this->tab[i]=t[i];
 	}
-} 
+}
 
 int StrTab::size()
 {
@@ -848,7 +848,7 @@ void StrTab::set(int indice, string i)
 	{
 		this->tab[indice]=i;
 	}
-	
+
 }
 
 void StrTab::append(string i)
@@ -885,7 +885,7 @@ void StrTab::concatD(StrTab t)
 	{
 		this->set(i,t.get(i-newsize+t.size()));
 	}
-	
+
 }
 
 void StrTab::del(int indice)
@@ -960,7 +960,7 @@ int alphafond,int Rfond,int Vfond, int Bfond,int alphatexte,int Rtexte,int Vtext
 	this->id=id;
 	this->nbChar=nbChar;
 	this->actif=0;
-	
+
 	this->infosTexte={"",filePolice,taillePolice,alphatexte,Rtexte,Vtexte,Btexte};
 	this->texte=new item(f,"texte_de_lentree_"+id,0,x+ajustTextX,y+ajustTextY,{""});
 	this->texte->addApparence("defaut",this->creerTexte(texteDefaut),filePolice,taillePolice,alphatexte,
@@ -1015,7 +1015,7 @@ void entry::freeEntry()
 }
 item::item(Fenetre *f,string id,int plan,int x,int y,vector<string> classesObstacles)
 {
-	
+
 	this->f=f;
 	if(f->allItemsList.find(id)!=f->allItemsList.end())f->allItemsList[id]->freeItem();
 	f->allItemsList[id]=this;
@@ -1030,8 +1030,8 @@ item::item(Fenetre *f,string id,int plan,int x,int y,vector<string> classesObsta
 	this->etat.floatRect.w=0;
 	this->etat.rect.h=0;
 	this->etat.floatRect.h=0;
-	this->etat.typeApparence='n'; 
-	this->etat.idApparence=""; 
+	this->etat.typeApparence='n';
+	this->etat.idApparence="";
 	this->etat.classesObstacles=classesObstacles;
 	this->etat.vitesse.vx=0;
 	this->etat.vitesse.vy=0;
@@ -1049,7 +1049,7 @@ void item::changerPlan(int plan)
 	{
 		this->etat.plan=plan;
 	}
-	
+
 }
 void item::changerApparence(char typeApparence,string idApparence)
 {
@@ -1112,8 +1112,8 @@ void item::addApparence(string id,int w,int h,int alpha,int R,int V,int B)
 	int troncat=0;
 	if(this->etat.typeApparence=='n')
 	{
-		this->etat.typeApparence='i'; 
-		this->etat.idApparence=id; 
+		this->etat.typeApparence='i';
+		this->etat.idApparence=id;
 	}
 	if(imgs.find(id)!=imgs.end())
 	{
@@ -1132,7 +1132,7 @@ void item::addApparence(string id,int w,int h,int alpha,int R,int V,int B)
 			SDL_SetTextureBlendMode(textu,SDL_BLENDMODE_BLEND);
 			SDL_SetTextureAlphaMod(textu,alpha);
 		}
-		
+
 		f->texturesChargees[atester].texture=textu;
 		f->texturesChargees[atester].nbUtilisations=1;
 	}
@@ -1140,17 +1140,17 @@ void item::addApparence(string id,int w,int h,int alpha,int R,int V,int B)
 	{
 		f->texturesChargees[atester].nbUtilisations+=1;
 	}
-	
+
 	SDL_QueryTexture(f->texturesChargees[atester].texture,NULL,NULL,&(this->etat.rect.w),&(this->etat.rect.h));
 	this->imgs[id]={f->texturesChargees[atester].texture,troncat};
-	
+
 }// (RECT FILLED)
 void item::addApparence(string id,string file,int troncat,int alpha,int R,int V,int B)
 {
 	if(this->etat.typeApparence=='n')
 	{
-		this->etat.typeApparence='i'; 
-		this->etat.idApparence=id; 
+		this->etat.typeApparence='i';
+		this->etat.idApparence=id;
 	}
 	if(imgs.find(id)!=imgs.end())
 	{
@@ -1172,7 +1172,7 @@ void item::addApparence(string id,string file,int troncat,int alpha,int R,int V,
 			SDL_SetTextureBlendMode(textu,SDL_BLENDMODE_BLEND);
 			SDL_SetTextureAlphaMod(textu,alpha);
 		}
-		
+
 		f->texturesChargees[atester].texture=textu;
 		f->texturesChargees[atester].nbUtilisations=1;
 	}
@@ -1180,17 +1180,17 @@ void item::addApparence(string id,string file,int troncat,int alpha,int R,int V,
 	{
 		f->texturesChargees[atester].nbUtilisations+=1;
 	}
-	
+
 	SDL_QueryTexture(f->texturesChargees[atester].texture,NULL,NULL,&(this->etat.rect.w),&(this->etat.rect.h));
 	this->imgs[id]={f->texturesChargees[atester].texture,troncat};
-	
+
 }//img
 void item::addApparence(string id,vector<string> files,vector<int>durees,vector<int> troncats,vector<int> alphas,int R,int V,int B)
 {
 	if(this->etat.typeApparence=='n')
 	{
-		this->etat.typeApparence='a'; 
-		this->etat.idApparence=id; 
+		this->etat.typeApparence='a';
+		this->etat.idApparence=id;
 	}
 	if(anis.find(id)!=anis.end())
 	{
@@ -1206,21 +1206,21 @@ void item::addApparence(string id,vector<string> files,vector<int>durees,vector<
 			SDL_Surface*surf=SDL_LoadBMP(files[i].c_str());
 			if(R!=-1)
 			{
-			
+
 				SDL_SetColorKey(surf, SDL_TRUE, SDL_MapRGB(surf->format,R,V,B));
 			}
 			textu=SDL_CreateTextureFromSurface(f->renderer,surf);
 			SDL_FreeSurface(surf);
-		
+
 			if(alphas[i]<255)
 			{
-				
+
 				SDL_SetTextureBlendMode(textu,SDL_BLENDMODE_BLEND);
 				SDL_SetTextureAlphaMod(textu,alphas[i]);
 			}
 			f->texturesChargees[atester].texture=textu;
 			f->texturesChargees[atester].nbUtilisations=1;
-			
+
 		}
 		else
 		{
@@ -1236,15 +1236,15 @@ void item::addApparence(string id,vector<string> files,vector<int>durees,vector<
 		{
 			this->anis[id].textures.push_back(f->texturesChargees[atester].texture);
 		}
-		
+
 	}
 }//ani
 void item::addApparence(string id,string texte,string fileTTF,int taille,int alpha,int R,int V,int B)
 {
 	if(this->etat.typeApparence=='n')
 	{
-		this->etat.typeApparence='e'; 
-		this->etat.idApparence=id; 
+		this->etat.typeApparence='e';
+		this->etat.idApparence=id;
 	}
 	if(ecrs.find(id)!=ecrs.end())
 	{
@@ -1265,7 +1265,7 @@ void item::addApparence(string id,string texte,string fileTTF,int taille,int alp
 	{
 		if(str[indice]=='\n')
 		{
-			
+
 			if(indice!=size-1)
 			{
 				stab.append("");
@@ -1316,7 +1316,7 @@ void item::delApparencePourRemplacement(char typeApparence,string idApparence)
 		{
 			if(imgs[idApparence].texture==iteratorTextuChargeesToken.second.texture)
 			{
-				iteratorTextuChargeesToken.second.nbUtilisations-=1;	
+				iteratorTextuChargeesToken.second.nbUtilisations-=1;
 				if(iteratorTextuChargeesToken.second.nbUtilisations<=0)
 				{
 					SDL_DestroyTexture(imgs[idApparence].texture);
@@ -1335,7 +1335,7 @@ void item::delApparencePourRemplacement(char typeApparence,string idApparence)
 			{
 				if(anis[idApparence].textures[i]==iteratorTextuChargeesToken.second.texture)
 				{
-					iteratorTextuChargeesToken.second.nbUtilisations-=1;	
+					iteratorTextuChargeesToken.second.nbUtilisations-=1;
 					if(iteratorTextuChargeesToken.second.nbUtilisations<=0)
 					{
 						SDL_DestroyTexture(anis[idApparence].textures[i]);
@@ -1368,7 +1368,7 @@ void item::delApparence(char typeApparence,string idApparence)
 			{
 				if(imgs[idApparence].texture==iteratorTextuChargeesToken.second.texture)
 				{
-					iteratorTextuChargeesToken.second.nbUtilisations-=1;	
+					iteratorTextuChargeesToken.second.nbUtilisations-=1;
 					if(iteratorTextuChargeesToken.second.nbUtilisations<=0)
 					{
 						SDL_DestroyTexture(imgs[idApparence].texture);
@@ -1387,7 +1387,7 @@ void item::delApparence(char typeApparence,string idApparence)
 				{
 					if(anis[idApparence].textures[i]==iteratorTextuChargeesToken.second.texture)
 					{
-						iteratorTextuChargeesToken.second.nbUtilisations-=1;	
+						iteratorTextuChargeesToken.second.nbUtilisations-=1;
 						if(iteratorTextuChargeesToken.second.nbUtilisations<=0)
 						{
 							SDL_DestroyTexture(anis[idApparence].textures[i]);
@@ -1419,7 +1419,7 @@ void item::freeItem()
 	    {
 		    if(iteratorImgsToken.second.texture==iteratorTextuChargeesToken.second.texture)
 			{
-				iteratorTextuChargeesToken.second.nbUtilisations-=1;	
+				iteratorTextuChargeesToken.second.nbUtilisations-=1;
 				if(iteratorTextuChargeesToken.second.nbUtilisations<=0)
 				{
 					SDL_DestroyTexture(iteratorImgsToken.second.texture);
@@ -1435,10 +1435,10 @@ void item::freeItem()
 		{
 			for(auto  iteratorTextuChargeesToken : f->texturesChargees)
 			{
-			
+
 				if(iteratorAnisToken.second.textures[i]==iteratorTextuChargeesToken.second.texture)
 				{
-					iteratorTextuChargeesToken.second.nbUtilisations-=1;	
+					iteratorTextuChargeesToken.second.nbUtilisations-=1;
 					if(iteratorTextuChargeesToken.second.nbUtilisations<=0)
 					{
 						SDL_DestroyTexture(iteratorAnisToken.second.textures[i]);
@@ -1476,12 +1476,12 @@ void item::move()
 	}
 	else
 	{
-		
+
 		this->etat.floatRect.x+=this->etat.vitesse.vx/(float)f->currFps;
 		this->etat.floatRect.y+=this->etat.vitesse.vy/(float)f->currFps;
 		this->etat.rect.x=this->etat.floatRect.x;
 		this->etat.rect.y=this->etat.floatRect.y;
-		
+
 	}
 }
 void item::move(float vx,float vy)
@@ -1531,7 +1531,7 @@ void item::go(float x,float y)
 					iterator->second.posLignes[i].y=y+ecart*i;
 				}
 			}
-			
+
 		}
 	}
 	else
@@ -1551,16 +1551,16 @@ void item::moveX(float vx)
 			for(int i=0;i<iterator->second.posLignes.size();i++)
 			{
 				iterator->second.posfLignes[i].x+=vx/(float)f->currFps;
-		
+
 				iterator->second.posLignes[i].x=iterator->second.posfLignes[i].x;
-			
+
 			}
 		}
 	}
 	else
 	{
 		this->etat.floatRect.x+=vx/(float)f->currFps;
-	
+
 		this->etat.rect.x=castInt(this->etat.floatRect.x);
 
 	}
@@ -1573,18 +1573,18 @@ void item::moveY(float vy)
 		{
 			for(int i=0;i<iterator->second.posLignes.size();i++)
 			{
-			
+
 				iterator->second.posfLignes[i].y+=vy/(float)f->currFps;
-			
+
 				iterator->second.posLignes[i].y=iterator->second.posfLignes[i].y;
 			}
 		}
 	}
 	else
 	{
-	
+
 		this->etat.floatRect.y+=vy/(float)f->currFps;
-		
+
 		this->etat.rect.y=castInt(this->etat.floatRect.y);
 	}
 }
@@ -1612,7 +1612,7 @@ void item::goX(float x)
 					iterator->second.posLignes[i].x=x;
 				}
 			}
-			
+
 		}
 	}
 	else
@@ -1629,9 +1629,9 @@ void item::goY(float y)
 		{
 			if(iterator->second.posLignes.size()==1)
 			{
-				
+
 				iterator->second.posfLignes[0].y=y;
-				
+
 				iterator->second.posLignes[0].y=y;
 			}
 			else
@@ -1639,19 +1639,19 @@ void item::goY(float y)
 				int ecart=iterator->second.posfLignes[1].y-iterator->second.posfLignes[0].y;
 				for(int i=0;i<iterator->second.posLignes.size();i++)
 				{
-					
+
 					iterator->second.posfLignes[i].y=y+ecart*i;
-					
+
 					iterator->second.posLignes[i].y=y+ecart*i;
 				}
 			}
-			
+
 		}
 	}
 	else
 	{
-		
-	
+
+
 		this->etat.rect.y=castInt(y);
 		this->etat.floatRect.y=y;
 	}
@@ -1663,11 +1663,11 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 	int coly=0;
 	int troncat=0,troncat0=0;//par défault (ou ecr);
 	colToken col;
-	
+
 	if(etat.typeApparence=='i')
 	{
 		troncat=imgs[etat.idApparence].troncat;
-	}	
+	}
 	else if(etat.typeApparence=='a')
 	{
 		float relatTime=(int)f->t%sum(anis[etat.idApparence].durees.size(),anis[etat.idApparence].durees);
@@ -1683,10 +1683,10 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 	y=etat.rect.y+troncat;
 	w=etat.rect.w-2*troncat;
 	h=etat.rect.h-2*troncat;
-	
+
 	SDL_Rect rectobs;
 	int xGoDeMinMove=newx,yGoDeMinMove=newy;
-	
+
 	for(int i=0;i<this->etat.classesObstacles.size();i++)
 	{
 		for(auto const& iterator : f->obstaclesList[this->etat.classesObstacles[i]])
@@ -1694,7 +1694,7 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 			if(iterator.second->etat.typeApparence=='i')
 			{
 				troncat0=iterator.second->imgs[iterator.second->etat.idApparence].troncat;
-			}	
+			}
 			else if(iterator.second->etat.typeApparence=='a')
 			{
 				float relatTime=(int)f->t%sum(iterator.second->anis[iterator.second->etat.idApparence].durees.size(),
@@ -1711,7 +1711,7 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 			y0=rectobs.y+troncat0;
 			w0=rectobs.w-2*troncat0;
 			h0=rectobs.h-2*troncat0;
-		
+
 			if(w0!=0 and h0!=0)
 			{
 			//avoir bon y
@@ -1732,7 +1732,7 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 									col.axe='x';
 									colList.push_back(col);
 								}
-								
+
 							}
 							colx=1;
 						}
@@ -1744,7 +1744,7 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 							if(fabs(xGoDeMinMove-x)>=fabs(x0+w0-x))
 							{
 								xGoDeMinMove=x0+w0;
-								
+
 								if(saveCol)
 								{
 									col.obstacle=iterator.second;
@@ -1756,16 +1756,16 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 								}
 							}
 							colx=1;
-							
+
 						}
 					}
 				}
 			}
 		}
-	
+
 		if (colx==1)
 		{
-			
+
 			if(vx>0)
 			{
 				xGoDeMinMove-=1;
@@ -1776,14 +1776,14 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 			}
 		}
 		x=xGoDeMinMove;
-		
-		
+
+
 		for(auto const& iterator : f->obstaclesList[this->etat.classesObstacles[i]])
-		{	
+		{
 			if(iterator.second->etat.typeApparence=='i')
 			{
 				troncat0=iterator.second->imgs[iterator.second->etat.idApparence].troncat;
-			}	
+			}
 			else if(iterator.second->etat.typeApparence=='a')
 			{
 				float relatTime=(int)f->t%sum(iterator.second->anis[iterator.second->etat.idApparence].durees.size(),
@@ -1809,7 +1809,7 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 							if(fabs(yGoDeMinMove-y)>=fabs(y0-y-h))
 							{
 								yGoDeMinMove=y0-h;
-								
+
 								if(saveCol)
 								{
 									col.obstacle=iterator.second;
@@ -1829,7 +1829,7 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 							if(fabs(yGoDeMinMove-y)>=fabs(y0+h0-y))
 							{
 								yGoDeMinMove=y0+h0;
-								
+
 								if(saveCol)
 								{
 									col.obstacle=iterator.second;
@@ -1846,7 +1846,7 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 			}
 		}
 	}
-	
+
 	if(xGoDeMinMove<0 and vx<0)xGoDeMinMove--;
 	if(yGoDeMinMove<0 and vy<0)yGoDeMinMove--;
 	if (colx==1)
@@ -1862,13 +1862,13 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 				yGoDeMinMove+=1;
 			}
 			go(xGoDeMinMove-troncat,yGoDeMinMove-troncat);
-		
+
 			return 2;
 		}
 		else
 		{
 			go(xGoDeMinMove-troncat,yGoDeMinMove-troncat);
-			
+
 			return 1;
 		}
 	}
@@ -1885,7 +1885,7 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 				yGoDeMinMove+=1;
 			}
 			go(xGoDeMinMove-troncat,yGoDeMinMove-troncat);
-			
+
 			return -1;
 		}
 		else
@@ -1893,28 +1893,28 @@ int item::moveAuMax(int vx,int vy,int saveCol)
 			go(xGoDeMinMove-troncat,yGoDeMinMove-troncat);
 			return 0;
 		}
-		
+
 	}
 }
 
 int item::moveAuMax(int saveCol)
 {
-	
+
 	int colx=0;
 	int coly=0;
 	int troncat=0,troncat0=0;//par défault (ou ecr);
 	colToken col;
-	
+
 	if(etat.typeApparence=='i')
 	{
 		troncat=imgs[etat.idApparence].troncat;
-	}	
+	}
 	else if(etat.typeApparence=='a')
 	{
 		float relatTime=(int)f->t%sum(anis[etat.idApparence].durees.size(),anis[etat.idApparence].durees);
 		int reachres=reach(relatTime,anis[etat.idApparence].durees.size(),anis[etat.idApparence].durees);
 		troncat=anis[etat.idApparence].troncats[reachres];
-		
+
 	}
 	int vx=etat.vitesse.vx;
 	int vy=etat.vitesse.vy;
@@ -1926,7 +1926,7 @@ int item::moveAuMax(int saveCol)
 	y=etat.rect.y+troncat;
 	w=etat.rect.w-2*troncat;
 	h=etat.rect.h-2*troncat;
-	
+
 	SDL_Rect rectobs;
 	int xGoDeMinMove=newx,yGoDeMinMove=newy;
 	for(int i=0;i<this->etat.classesObstacles.size();i++)
@@ -1936,7 +1936,7 @@ int item::moveAuMax(int saveCol)
 			if(iterator.second->etat.typeApparence=='i')
 			{
 				troncat0=iterator.second->imgs[iterator.second->etat.idApparence].troncat;
-			}	
+			}
 			else if(iterator.second->etat.typeApparence=='a')
 			{
 				float relatTime=(int)f->t%sum(iterator.second->anis[iterator.second->etat.idApparence].durees.size(),
@@ -1953,7 +1953,7 @@ int item::moveAuMax(int saveCol)
 			y0=rectobs.y+troncat0;
 			w0=rectobs.w-2*troncat0;
 			h0=rectobs.h-2*troncat0;
-		
+
 			if(w0!=0 and h0!=0)
 			{
 			//avoir bon y
@@ -1974,7 +1974,7 @@ int item::moveAuMax(int saveCol)
 									col.axe='x';
 									colList.push_back(col);
 								}
-								
+
 							}
 							colx=1;
 						}
@@ -1986,7 +1986,7 @@ int item::moveAuMax(int saveCol)
 							if(fabs(xGoDeMinMove-x)>=fabs(x0+w0-x))
 							{
 								xGoDeMinMove=x0+w0;
-								
+
 								if(saveCol)
 								{
 									col.obstacle=iterator.second;
@@ -1998,16 +1998,16 @@ int item::moveAuMax(int saveCol)
 								}
 							}
 							colx=1;
-							
+
 						}
 					}
 				}
 			}
 		}
-	
+
 		if (colx==1)
 		{
-			
+
 			if(vx>0)
 			{
 				xGoDeMinMove-=1;
@@ -2018,14 +2018,14 @@ int item::moveAuMax(int saveCol)
 			}
 		}
 		x=xGoDeMinMove;
-		
-		
+
+
 		for(auto const& iterator : f->obstaclesList[this->etat.classesObstacles[i]])
-		{	
+		{
 			if(iterator.second->etat.typeApparence=='i')
 			{
 				troncat0=iterator.second->imgs[iterator.second->etat.idApparence].troncat;
-			}	
+			}
 			else if(iterator.second->etat.typeApparence=='a')
 			{
 				float relatTime=(int)f->t%sum(iterator.second->anis[iterator.second->etat.idApparence].durees.size(),
@@ -2051,7 +2051,7 @@ int item::moveAuMax(int saveCol)
 							if(fabs(yGoDeMinMove-y)>=fabs(y0-y-h))
 							{
 								yGoDeMinMove=y0-h;
-								
+
 								if(saveCol)
 								{
 									col.obstacle=iterator.second;
@@ -2071,7 +2071,7 @@ int item::moveAuMax(int saveCol)
 							if(fabs(yGoDeMinMove-y)>=fabs(y0+h0-y))
 							{
 								yGoDeMinMove=y0+h0;
-								
+
 								if(saveCol)
 								{
 									col.obstacle=iterator.second;
@@ -2088,7 +2088,7 @@ int item::moveAuMax(int saveCol)
 			}
 		}
 	}
-	
+
 	if(xGoDeMinMove<0 and vx<0)xGoDeMinMove--;
 	if(yGoDeMinMove<0 and vy<0)yGoDeMinMove--;
 	if (colx==1)
@@ -2104,13 +2104,13 @@ int item::moveAuMax(int saveCol)
 				yGoDeMinMove+=1;
 			}
 			go(xGoDeMinMove-troncat,yGoDeMinMove-troncat);
-		
+
 			return 2;
 		}
 		else
 		{
 			go(xGoDeMinMove-troncat,yGoDeMinMove-troncat);
-			
+
 			return 1;
 		}
 	}
@@ -2127,16 +2127,16 @@ int item::moveAuMax(int saveCol)
 				yGoDeMinMove+=1;
 			}
 			go(xGoDeMinMove-troncat,yGoDeMinMove-troncat);
-			
+
 			return -1;
 		}
 		else
 		{
-			
+
 			 go(xGoDeMinMove-troncat,yGoDeMinMove-troncat);
 			return 0;
 		}
-		
+
 	}
 }
 
@@ -2210,7 +2210,7 @@ Fenetre::Fenetre(int l,int h,char *title,int posx,int posy,int nbPlans,void (*fS
 	this->hauteur=h;
 	this->titre=title;
 	this->addAction(fStart,1);
-	
+
 	this->nbPlans=max(2,nbPlans);
 	blitList.resize(this->nbPlans);
 	if(fullscreen)
@@ -2222,7 +2222,7 @@ Fenetre::Fenetre(int l,int h,char *title,int posx,int posy,int nbPlans,void (*fS
 		Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
 		TTF_Init();
 		this->renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_TARGETTEXTURE|SDL_RENDERER_PRESENTVSYNC);
-		SDL_SetRenderDrawColor(this->renderer , 0, 0, 0, 255); 
+		SDL_SetRenderDrawColor(this->renderer , 0, 0, 0, 255);
 
 		SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 		SDL_RenderSetLogicalSize(renderer, l, h);
@@ -2235,7 +2235,7 @@ Fenetre::Fenetre(int l,int h,char *title,int posx,int posy,int nbPlans,void (*fS
 		Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
 		TTF_Init();
 		this->renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
-		SDL_SetRenderDrawColor(this->renderer , 0, 0, 0, 255); 
+		SDL_SetRenderDrawColor(this->renderer , 0, 0, 0, 255);
 	}
 }
 
@@ -2247,7 +2247,7 @@ int Fenetre::nextEvent(int flag)
 		while(res==1 and this->e->type==SDL_MOUSEMOTION)
 		{
 			res=SDL_PollEvent(this->e);
-		}	
+		}
 	}
 	if(e->type==SDL_MOUSEBUTTONDOWN)
 	{
@@ -2261,7 +2261,7 @@ int Fenetre::nextEvent(int flag)
 		if(buttonPushed==0)
 		{
 			this->buttonPushed=1;
-			
+
 			for(auto iterator :allButtonsList)
 			{
 				xb=iterator.second->fond->etat.rect.x;
@@ -2275,7 +2275,7 @@ int Fenetre::nextEvent(int flag)
 				}
 			}
 		}
-		
+
 		for(auto iterator2 :allEntriesList)
 		{
 			xb=iterator2.second->fond->etat.rect.x;
@@ -2358,7 +2358,7 @@ int Fenetre::nextEvent(int flag)
 	}
 	if (e->type==SDL_QUIT){this->finMainLoop();return 0;}
 	return res;
-	
+
 }
 
 void Fenetre::resetImgs()
@@ -2378,10 +2378,27 @@ void Fenetre::setFpsMax(float  fpsMax)
 {
 	this->fpsMax=fpsMax;
 }
-void Fenetre::setBG(char* s,int alpha=255)
+
+void Fenetre::setBG(int alpha,int R,int V,int B)
 {
 	SDL_DestroyTexture(this->BG);
-	SDL_Surface *surf=SDL_LoadBMP(s);
+	SDL_Surface*surf=SDL_CreateRGBSurface(0,1,1,32,0,0,0,0);
+	SDL_FillRect(surf,NULL,SDL_MapRGB(surf->format,R,V,B));
+	this->BG=SDL_CreateTextureFromSurface(this->renderer,surf);
+
+	if(alpha<255)
+	{
+		SDL_SetTextureBlendMode(this->BG,SDL_BLENDMODE_BLEND);
+		SDL_SetTextureAlphaMod(this->BG,alpha);
+	}
+	SDL_FreeSurface(surf);
+}
+
+
+void Fenetre::setBG(char* file,int alpha)
+{
+	SDL_DestroyTexture(this->BG);
+	SDL_Surface *surf=SDL_LoadBMP(file);
 	this->BG=SDL_CreateTextureFromSurface(this->renderer,surf);
 	if(alpha<255)
 	{
@@ -2444,7 +2461,7 @@ void Fenetre::unBlit(item *it)
 		blitList[i].erase(it->id);
 	}
 	it->etat.blited=0;
-	
+
 }
 void Fenetre::deleteAlls()
 {
@@ -2475,14 +2492,14 @@ void Fenetre::loopActions()
 	{
 		action= actionsListCopie.begin();
 		actionsListCopie.erase(action);
-		(action->first)(this);	
+		(action->first)(this);
 	}
 }
 
 void Fenetre::loopBlit()
 {/**/
 	SDL_RenderClear(this->renderer);
-	 
+
 	SDL_RenderCopy(this->renderer, this->BG, NULL,&posBG);
 	item *currItem;
 	for(int i=nbPlans-1;i>=0;i--)
@@ -2490,29 +2507,29 @@ void Fenetre::loopBlit()
 		for(auto itemIter : blitList[i])
 		{
 			currItem=itemIter.second;
-			
+
 			if(currItem->etat.typeApparence=='i')
 			{
 				SDL_Texture *currTextu=currItem->imgs[currItem->etat.idApparence].texture;
-				
+
 				SDL_RenderCopy(this->renderer,currTextu,NULL,&currItem->etat.rect);
 			}
 			else if(currItem->etat.typeApparence=='a')
 			{
 				anisToken currAni=currItem->anis[currItem->etat.idApparence];
-				
+
 				float relatTime=(int)this->t%sum(currAni.durees.size(),currAni.durees);
-				
+
 				int reachres=reach(relatTime,currAni.durees.size(),currAni.durees);
-				
+
 				SDL_RenderCopy(this->renderer,currAni.textures[reachres],NULL,&currItem->etat.rect);
-			
+
 			}
-			
+
 			else if(currItem->etat.typeApparence=='e')
 			{
 				ecrsToken currEcr=currItem->ecrs[currItem->etat.idApparence];
-				
+
 				for(int i=0;i<currEcr.textures.size();i++)
 				{
 					SDL_RenderCopy(this->renderer,currEcr.textures[i],NULL,&currEcr.posLignes[i]);
@@ -2529,7 +2546,7 @@ void Fenetre::loopBlit()
 
 void Fenetre::quit()
 {/*finMainloop l'utilise donc pas besoin de l'utiliser en dehors*/
-	
+
 	Mix_CloseAudio();
 	TTF_Quit();
 	SDL_Quit();
@@ -2538,7 +2555,7 @@ void Fenetre::quit()
 
 void Fenetre::mainLoop()
 {/**/
-	
+
 	while (this->conti)
 	{
 		if (SDL_GetTicks()-this->t>=1000.0/(float)this->currFps)
@@ -2551,7 +2568,7 @@ void Fenetre::mainLoop()
 		}
 	}
 
-	
+
 	this->quit();
 }
 
@@ -2559,12 +2576,3 @@ void Fenetre::finMainLoop()
 {/**/
 	this->conti=0;
 }
-
-
-
-
-
-
-
-
-

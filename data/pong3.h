@@ -4,7 +4,7 @@
 
 #include <SDL2/SDL.h>
 #include <stdio.h>
- #include<vector> 
+ #include<vector>
 #include <string>
 #include<iostream>
 #include<cmath>
@@ -94,7 +94,7 @@ class List
 {
 	public:
 	liste =NULL
-	void 
+	void
 */
 #define DISABLE_MOUSEMOTION_EVENTS 0
 #define ENABLE_MOUSEMOTION_EVENTS 1
@@ -129,7 +129,7 @@ class IntTab
 {
 	private:
 	vector<int> tab;
-	
+
 	public:
 	IntTab(int taille,...);
 	IntTab(int taille,int t[]);
@@ -148,14 +148,14 @@ class IntTab
 	int sum();
 	int reach(int i);
 	int reach(float i);
-	
+
 };
 
 class DblTab
 {
 	private:
 	vector<float> tab;
-	
+
 	public:
 	DblTab(int taille,...);
 	DblTab(int taille,float t[]);
@@ -171,14 +171,14 @@ class DblTab
 	void resize(int i);
 	float sum();
 	int reach(float i);
-	
+
 };
 
 class PtrTab
 {
 	private:
 	vector<void *> tab;
-	
+
 	public:
 	PtrTab(int taille,...);
 	PtrTab(int taille,void* t[]);
@@ -192,14 +192,14 @@ class PtrTab
 	void del(int indice);
 	void resize(int i,void* val);
 	void resize(int i);
-	
+
 };
 
 class SrfTab
 {
 	private:
 	vector<SDL_Surface*> tab;
-	
+
 	public:
 	SrfTab(int taille,...);
 	SrfTab(int taille,SDL_Surface* t[]);
@@ -213,14 +213,14 @@ class SrfTab
 	void del(int indice);
 	void resize(int i,SDL_Surface* val);
 	void resize(int i);
-	
+
 };
 
 class StrTab
 {
 	private:
 	vector<string> tab;
-	
+
 	public:
 	StrTab(string s);
 	StrTab(int taille,string t[]);
@@ -236,7 +236,7 @@ class StrTab
 	void resize(int i);
 	void plusegal(int indice,string straconcat);
 	void plusegal(int indice,char characoncat);
-	
+
 };
 
 
@@ -246,7 +246,7 @@ class StrTab
 
 
 struct texturesChargeesToken{SDL_Texture*texture;int nbUtilisations;};
- 
+
 struct imgsToken{SDL_Texture*texture;int troncat;};
 
 struct anisToken{vector<SDL_Texture*>textures;vector<int> durees;vector<int> troncats;};
@@ -260,10 +260,10 @@ struct ecrsToken{vector<SDL_Texture*>textures;vector<SDL_Rect> posLignes;vector<
 struct vitesseToken{float vx;float vy;};
 
 struct etatToken{
-	char typeApparence; 
-	string idApparence; 
-	int plan; 
-	SDL_Rect rect; 
+	char typeApparence;
+	string idApparence;
+	int plan;
+	SDL_Rect rect;
 	floatRectToken floatRect;
 	vitesseToken vitesse;
 	vector<string> classesObstacles;
@@ -280,18 +280,18 @@ class item
 {
 	public :
 	Fenetre *f;
-	
+
 	map<string,imgsToken> imgs;
 	map<string, anisToken> anis;
 	map<string,ecrsToken> ecrs;
 
 	vector<colToken> colList;
-	
+
 	etatToken etat;
 	string id;
-	
+
 	item(Fenetre *f,string id,int plan,int x,int y,vector<string>classesObstacles);
-	//->Libère l'item qui avait le même id dans f 
+	//->Libère l'item qui avait le même id dans f
 	void changerPlan(int plan);
 	//->
 	void changerApparence(char typeApparence,string idApparence);
@@ -339,10 +339,10 @@ class item
 	int moveAuMax(int saveCol);
 	//->
 	colToken nextCol();
-	
-	
-	
-	
+
+
+
+
 };
 
 
@@ -383,7 +383,7 @@ class entry
 
 class Fenetre
 {
-	
+
 	public:
 	SDL_Window* window=NULL;
 	SDL_Renderer *renderer=NULL;
@@ -399,51 +399,52 @@ class Fenetre
 	SDL_Event *e;
 	int nbPlans;
 	SDL_Rect posBG;
-	
+
 	int buttonPushed;
-	
+
 	entry * entreeActive;
-	
+
 	map<string,entry*> allEntriesList;
-	
+
 	map<string,button*> allButtonsList;
-	
+
 	map<string,item*> allItemsList;
-	
+
 	map<int,string> scanCodeToChar;
-	
+
 	map<pair<string,int>,texturesChargeesToken> texturesChargees;
-	
+
 	map<string,map<string,item*>> obstaclesList;
 	// map<string,item*> obstaclesList;
 
 	map<void (*)(Fenetre *f),int> actionsList;
 	map<void (*)(Fenetre *f),int> actionsListCopie;
-	
+
 	vector<map<string,item*>> blitList;
-	
-	
-	
+
+
+
 	SDL_Texture *BG=NULL;
-	
+
 	Fenetre(int l,int h,char *title,int posx,int posy,int nbPlans,void (*fStart)(Fenetre *f),int fpsmax,int fullscreen);
-	
+
 	int nextEvent(int flag);
-	
+
 	void resetImgs();
 	void resetActions();
 
-	
-	void setFpsMax(float fpsmax);
-	void setBG(char* s,int alpha);
 
-	
+	void setFpsMax(float fpsmax);
+  void setBG(int alpha,int R,int V,int B);
+	void setBG(char* file,int alpha);
+
+
 	void addAction(void (*f)(Fenetre *fen),int init);
 	void delAction(void (*f)(Fenetre *fen));
-	
-	
+
+
 	void unBlit(item *it);
-	
+
 	void blit(item *it);
 	void deleteAlls();
 	void addObstacleInvisible(item *it);
@@ -451,20 +452,11 @@ class Fenetre
 
 	void loopActions();
 	void loopBlit();
-	
+
 	void quit();
 
 	void mainLoop();
 	void finMainLoop();
-	
-	
+
+
 };
-
-
-
-
-
-
-
-
-
