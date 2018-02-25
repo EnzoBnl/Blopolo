@@ -116,7 +116,7 @@ void leerabbit(Fenetre *f)
 	colToken col;int c;
 	if(f->actionsList[leerabbit]==2)
 	{
-		f->setBG(255,colorBG*50,colorBG*20,colorBG*20);
+		f->setBG(255,colorBG*rrand(0,60),colorBG*rrand(0,60),colorBG*rrand(0,60));
 		f->actionsList[leerabbit]=0;
 	}
 	if(f->actionsList[leerabbit]==1)
@@ -188,8 +188,13 @@ void leerabbit(Fenetre *f)
 		textebestscore->addApparence("base","BESTSCORE="+ItoS(bestscore)+" ("+pseudobestscore+")",
 		"TravelingTypewriter.otf",30,255,255,255,255);
 		f->blit(textebestscore);
+
 	}
-	int isFalling=(score/500)%2==1;
+	if (colorBG!=(score/500)%2==1){
+		colorBG=(colorBG+1)%2;
+		f->setBG(255,colorBG*rrand(0,60),colorBG*rrand(0,60),colorBG*rrand(0,60));
+	}
+
 	if(score>=scoreTimer+30)
 	{
 		scoreTimer=score;
@@ -197,22 +202,12 @@ void leerabbit(Fenetre *f)
 		textescore->addApparence("base","SCORE="+ItoS(score),"TravelingTypewriter.otf",30,255,255,255,255);
 	}
 	rabbit->moveAuMax(scroll,0,0);
-	if(colorBG==0 && isFalling){
-		f->setBG(255,rrand(0,60),rrand(0,60),rrand(0,60));
-		colorBG=1;
-	}
-	else if(colorBG==1 && !isFalling){
-		f->setBG(255,rrand(0,60),rrand(0,60),rrand(0,60));
-		colorBG=0;
-	}
 	for(int i=0;i<resl;i++)
 	{
 		for(int j=0;j<resc;j++)
 		{
-
-			bricks[i][j]->changerVitesseXY(scroll,isFalling*(10*(resl-i)+20));
+			bricks[i][j]->changerVitesseXY(scroll,colorBG*(10*(resl-i)+20));
 			bricks[i][j]->moveAuMax(0);
-
 			if(bricks[i][j]->etat.rect.x<=-tailleSprite)
 			{
 
@@ -402,7 +397,6 @@ void pause(Fenetre *f)
 {
 	if(f->actionsList[pause]==1)
 	{
-
 		f->setBG(255,100,100,100);
 		menuTexte=new item(f,"menu",0,resc*tailleSprite*0.35,(resl)*tailleSprite/2,{""});
 		menuTexte->addApparence("base","PAUSED","TravelingTypewriter.otf",
@@ -416,14 +410,22 @@ void pause(Fenetre *f)
 
 	while(f->nextEvent(DISABLE_MOUSEMOTION_EVENTS)!=0)
 	{
-
+		if (f->e->type==SDL_KEYUP)
+		{
+			if(f->e->key.keysym.sym==SDLK_q && f->e->key.repeat == 0){etat[1]=0;}
+			if(f->e->key.keysym.sym==SDLK_d && f->e->key.repeat == 0){etat[2]=0;}
+		}
 		if(f->e->key.keysym.sym==SDLK_a && f->e->key.repeat == 0)
 		{
 			f->finMainLoop();
 		}
-		if(f->e->type==SDL_KEYDOWN and f->e->key.keysym.sym==SDLK_s && f->e->key.repeat == 0)
-		{
-			bPauseFCT(f);
+		if(f->e->type==SDL_KEYDOWN){
+			if(f->e->key.keysym.sym==SDLK_s && f->e->key.repeat == 0)
+			{bPauseFCT(f);}
+			if(f->e->key.keysym.sym==SDLK_q && f->e->key.repeat == 0)
+			{etat[1]=1;}
+			if(f->e->key.keysym.sym==SDLK_d && f->e->key.repeat == 0)
+			{etat[2]=1;}
 		}
 	}
 
